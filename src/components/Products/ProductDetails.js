@@ -2,20 +2,20 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import api_client from '../../config/api_client';
 
-export default function PropertyDetails() {
+export default function ProductsDetails() {
   let { id } = useParams();
-  const [categories, setCategories] = useState({});
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
-    api_client.get(`http://localhost:3000/categories/${id}`).then(response => {
-      setCategories(response.data.categories)
+    api_client.get(`http://localhost:3000/products/${id}`).then(response => {
+      setProduct(response.data.product)
     })
   }, [id]);
 
   return (
     <div>
       <h1>Categories Details</h1>
-      <h3>{categories}</h3>
+      <h3>{product}</h3>
     </div>
   )
 }

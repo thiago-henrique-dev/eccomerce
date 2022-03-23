@@ -2,36 +2,40 @@ import api_client from '../../config/api_client';
 import { Button, Form } from "react-bootstrap";
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 export default function PropertyForm() {
   let { id } = useParams();
-
+  let navigate = useNavigate();
   const [name, setName] = useState('')
   
 
   useEffect(() => {
     if (id) {
-      api_client.get(`http://localhost:3000/categories`).then(response => {
-        const namecategory = response.data.name
-        setName(namecategory.name)
-      
+      api_client.get(`/categories/${id}`).then(response => {
+        const categories = response.data.categories
+        setName(categories.name_id)
+        
       })
     }
   }, [])
 
   const saveCategories = async () => {
-    const namecategory = {
+    const categories = {
       name: name
-
     }
+    console.log(name.id)
 
     if (id) {
-      api_client.put(`http://localhost:3000/categories`, { namecategory }).then(response => {
-        console.log(response)
+      api_client.put(`http://localhost:3000/categories/${id}`, { categories }).then(response => {
+        console.log("EDIT")
+        navigate("/categories");
       })
     } else {
-      api_client.post('http://localhost:3000/categories', { namecategory }).then(response => {
-        console.log(response)
+      api_client.post('http://localhost:3000/categories', { categories }).then(response => {
+        console.log("DELETE")
+        navigate("/categories");
+
       })
     }
   }
