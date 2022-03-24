@@ -17,6 +17,7 @@ export default function CategoryList() {
   return (
     <div className="categories-list">
       {categories.map(category => <CategoryRow category={category.name} key={category} />)}
+      <br></br>
       <p>
         <Link className="btn btn-success" to="/categories/new">Add New Category</Link>
       </p>

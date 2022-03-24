@@ -44,8 +44,6 @@ export default function PropertyForm() {
     <div>
       <Form>
         <Form.Group>
-       
-        
           <Form.Label>Name</Form.Label>
           <Form.Control as="textarea" name="name" value={name} onChange={(e) => { setName(e.target.value) }}/>
           <Button className="btn btn-success" onClick={saveCategories}>Save</Button>

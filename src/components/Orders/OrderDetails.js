@@ -4,18 +4,18 @@ import api_client from '../../config/api_client';
 
 export default function PropertyDetails() {
   let { id } = useParams();
-  const [categories, setCategories] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    api_client.get(`categories/${id}`).then(response => {
-      setCategories(response.data.categories)
+    api_client.get(`orders/${id}`).then(response => {
+      setOrders(response.data.orders)
     })
   }, [id]);
 
   return (
     <div>
-      <h1>Categories Details</h1>
-      <h3>{categories.id}</h3>
+      <h1>Orders Details</h1>
+      <h3>{orders.id}</h3>
     </div>
   )
 }

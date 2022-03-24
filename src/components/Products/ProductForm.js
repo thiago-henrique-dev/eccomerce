@@ -28,7 +28,7 @@ export default function PropertyForm() {
   }, [])
 
   const saveProducts = async () => {
-    const products = {
+    const products = { 
       name: name,
       price: price,
       productImage: productImage,

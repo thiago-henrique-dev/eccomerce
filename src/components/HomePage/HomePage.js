@@ -6,11 +6,21 @@ import OrderList from "../Orders/OrdersList"
 
 export default function HomePage() {
   return (
-    <>
-      <h1>Categorias</h1>
-        {/* <ProductList/> */}
-      <CategoriesList />
-      {/* <OrderList></OrderList> */}
+    <>   
+    <div>
+      <h1>Produtos</h1>
+      <Link className="btn btn-secondary" to={`/products`}>PRODUTOS</Link>
+    </div>
+    <br></br>
+      <div>
+        <h1>Categorias</h1>
+       <Link className="btn btn-secondary" to={`/categories`}>CATEGORIAS</Link>
+      </div>
+      <br></br>
+      <div>
+        <h1>Pedidos</h1>
+       <Link className="btn btn-secondary" to={`/orders`}>PEDIDOS</Link>
+      </div>
     </>
   )
 }
