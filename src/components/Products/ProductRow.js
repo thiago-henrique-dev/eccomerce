@@ -7,7 +7,12 @@ console.log("aaa", product);
 
   return (
     <div>
-      <Link to={`/products/${product}`}>{product.productId}</Link>
+      <Link to={`/products/${product}`}> {product.name}</Link>
+                                        <br></br>
+                                          R$:{product.price}
+                                          <br></br>
+                                          ID Categoria:{product.categoryId}
+                                          <br></br>
       <Link className="btn btn-secondary" to={`/products/${product}/edit`}>Edit</Link>
       <Link className="btn btn-danger" to={`/products/${product}/delete`}>Delete</Link>
     </div>
