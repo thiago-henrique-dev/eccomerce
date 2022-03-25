@@ -10,45 +10,35 @@ export default function PropertyForm() {
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
-  const [productImage, setProductImage] = useState('')
   const [categoryId, setCategoryId] = useState('')
   
 
   useEffect(() => {
     if (id) {
       api_client.get(`/products/${id}`).then(response => {
+        
         const products = response.data.products
         setName(products.name)
         setPrice(products.price)
-        setProductImage(products.productImage)
         setCategoryId(products.categoryId)
-        
+        console.log("form", response.data)
       })
     }
-  }, [])
+  }, [id])
 
-  const saveProducts = async () => {
-    const products = { 
-      name: name,
-      price: price,
-      productImage: productImage,
-      categoryId: categoryId
+  const saveProducts = async () =>{
+    const products = {
+        name: name,
+        price: price,
+        categoryId: categoryId
     }
-    
 
-    if (id) {
-      api_client.put(`http://localhost:3000/products/${id}`, { products }).then(response => {
-        console.log("EDIT")
-        navigate("/products");
-      })
-    } else {
-      api_client.post('http://localhost:3000/products', { products }).then(response => {
-        console.log("DELETE")
-        navigate("/products");
-
-      })
-    }
+    if(id){
+        api_client.put(`/products/${id}`, { products }).then(resp => { console.log(resp) })
+    } else{
+      api_client.post(`/products`, { products }).then(resp => { console.log(resp) })
   }
+}
 
   return (
     <div>
@@ -57,11 +47,9 @@ export default function PropertyForm() {
           <Form.Label>Name</Form.Label>
           <Form.Control name="Name" value={name} onChange={(e) => { setName(e.target.value) }}/>
           <Form.Label>Price</Form.Label>
-          <Form.Control as="textarea" name="price" value={price} onChange={(e) => { setPrice(e.target.value) }}/>
-          <Form.Label>Price</Form.Label>
-          <Form.Control name="price" value={setProductImage} onChange={(e) => { setProductImage(e.target.value) }}/>
-          <Form.Label>CategoryId</Form.Label>
-          <Form.Control name="area_sqmt" value={categoryId} onChange={(e) => { setCategoryId(e.target.value) }}/>
+          <Form.Control name="price" value={price} onChange={(e) => { setPrice(e.target.value) }}/>
+          <Form.Label>Categoria</Form.Label>
+          <Form.Control name="categoryId" value={categoryId} onChange={(e) => { setCategoryId(e.target.value) }}/>
           <Button className="btn btn-success" onClick={saveProducts}>Save</Button>
         </Form.Group>
       </Form>

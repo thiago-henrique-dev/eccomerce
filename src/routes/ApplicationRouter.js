@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import DeleteCategories from '../components/Categories/DeleteCategories'
 import CategoriesForm from '../components/Categories/CategoriesForm'
 import CategoriesDetails from '../components/Categories/CategoriesDetails'
+import MenuTop from '../components/Menu/MenuTopo'
 
 import ProductDetails from '../components/Products/ProductDetails'
 import ProductForm from '../components/Products/ProductForm'
@@ -21,6 +22,7 @@ export default function ApplicationRouter() {
       <Row>
         <Col>
           <Router>
+          <MenuTop/>
             <Routes>
 
               <Route exact path="/" element={<HomePage />}></Route>

@@ -11,15 +11,13 @@ export default function ProductList(){
     useEffect(() => {
         api_client.get('/products').then(response => {
             setProducts(response.data)
-            console.log(response.data, "aaa")
           })
       }
     , [])
-      console.log(products)
     function getProducts(){
       return (
         <>
-          {products.map((product) => <ProductRow product={product} key={product.id} />)}
+          {products.map((product) => <ProductRow product={product} key={product} />)}
         </>
       )
     }

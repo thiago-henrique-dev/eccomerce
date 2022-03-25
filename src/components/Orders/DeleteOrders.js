@@ -9,7 +9,7 @@ export default function DeleteProperty() {
 
   useEffect(() => {
     api_client.delete(`orders/${id}`).then(response => {
-      navigate('/')
+      // navigate('/')
     });
   }, []);
 

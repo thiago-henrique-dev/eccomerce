@@ -8,8 +8,9 @@ export default function DeleteCategories() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    api_client.delete(`http://localhost:3000/categories/${id}`).then(response => {
-      navigate('/')
+    api_client.delete(`/categories/${id}`).then(response => {
+        
+      navigate('/categories')
     });
   }, [id]);
 

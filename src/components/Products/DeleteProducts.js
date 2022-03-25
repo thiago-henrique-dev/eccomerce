@@ -8,10 +8,10 @@ export default function DeleteProperty() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    api_client.delete(`products/${id}`).then(response => {
-      navigate('/')
+    api_client.delete(`/products/${id}`).then(response => {
+      navigate('/products')
     });
-  }, []);
+  }, [id]);
 
   return (
     <></>

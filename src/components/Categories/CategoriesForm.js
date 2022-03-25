@@ -4,17 +4,17 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 
-export default function PropertyForm() {
+export default function CategoryForm() {
   let { id } = useParams();
   let navigate = useNavigate();
-  const [name, setName] = useState('')
-  
+  const [name, setName] = useState("")
+
 
   useEffect(() => {
     if (id) {
       api_client.get(`/categories/${id}`).then(response => {
-        const categories = response.data.categories
-        setName(categories.name_id)
+        const categories = response.data
+        setName(categories.name)
         
       })
     }
@@ -24,21 +24,20 @@ export default function PropertyForm() {
     const categories = {
       name: name
     }
-    console.log(name.id)
-
+    
     if (id) {
-      api_client.put(`http://localhost:3000/categories/${id}`, { categories }).then(response => {
-        console.log("EDIT")
+      api_client.put(`/categories/${id}`, { categories }).then(response => {
+        console.log(response.data, "eeeee??")
         navigate("/categories");
       })
     } else {
-      api_client.post('http://localhost:3000/categories', { categories }).then(response => {
-        console.log("DELETE")
+      api_client.post('/categories', {categories}).then(response => {
+        console.log(response.data, "eqi????")
         navigate("/categories");
-
+        
       })
     }
-  }
+    }
 
   return (
     <div>

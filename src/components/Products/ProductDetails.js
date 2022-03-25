@@ -7,7 +7,7 @@ export default function ProductsDetails() {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    api_client.get(`http://localhost:3000/products/${id}`).then(response => {
+    api_client.get(`products/${id}`).then(response => {
       setProduct(response.data.product)
     })
   }, [id]);
