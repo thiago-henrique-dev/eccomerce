@@ -17,7 +17,7 @@ export default function ProductList(){
     function getProducts(){
       return (
         <>
-          {products.map((product) => <ProductRow product={product} key={product} />)}
+          {products.map((product) => <ProductRow product={product} key={product.productId} />)}
         </>
       )
     }

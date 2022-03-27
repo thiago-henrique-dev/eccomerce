@@ -26,12 +26,12 @@ export default function CategoryForm() {
     }
     
     if (id) {
-      api_client.put(`/categories/${id}`, { categories }).then(response => {
+      api_client.put(`/categories/${id}`, { name }).then(response => {
         console.log(response.data, "eeeee??")
         navigate("/categories");
       })
     } else {
-      api_client.post('/categories', {categories}).then(response => {
+      api_client.post('/categories', { name} ).then(response => {
         console.log(response.data, "eqi????")
         navigate("/categories");
         

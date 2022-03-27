@@ -10,6 +10,7 @@ export default function PropertyForm() {
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
+  const [productImage, setProductImage] = useState('')
   const [categoryId, setCategoryId] = useState('')
   
 
@@ -17,9 +18,10 @@ export default function PropertyForm() {
     if (id) {
       api_client.get(`/products/${id}`).then(response => {
         
-        const products = response.data.products
+        const products = response.data
         setName(products.name)
         setPrice(products.price)
+        setProductImage(products.productImage)
         setCategoryId(products.categoryId)
         console.log("form", response.data)
       })
@@ -27,16 +29,16 @@ export default function PropertyForm() {
   }, [id])
 
   const saveProducts = async () =>{
-    const products = {
-        name: name,
-        price: price,
-        categoryId: categoryId
-    }
-
+   
     if(id){
-        api_client.put(`/products/${id}`, { products }).then(resp => { console.log(resp) })
+        api_client.put(`/products/${id}`, { name,price,productImage,categoryId }).then(resp => { console.log(resp) })
     } else{
-      api_client.post(`/products`, { products }).then(resp => { console.log(resp) })
+      api_client.post(`/products`, {name,price,productImage,categoryId }).then(resp => { 
+        
+        console.log("req", resp.name)
+      
+      })
+
   }
 }
 
@@ -48,6 +50,8 @@ export default function PropertyForm() {
           <Form.Control name="Name" value={name} onChange={(e) => { setName(e.target.value) }}/>
           <Form.Label>Price</Form.Label>
           <Form.Control name="price" value={price} onChange={(e) => { setPrice(e.target.value) }}/>
+          <Form.Label>IMage</Form.Label>
+          <Form.Control name="Imagem" value={productImage} onChange={(e) => { setProductImage(e.target.value) }}/>
           <Form.Label>Categoria</Form.Label>
           <Form.Control name="categoryId" value={categoryId} onChange={(e) => { setCategoryId(e.target.value) }}/>
           <Button className="btn btn-success" onClick={saveProducts}>Save</Button>
