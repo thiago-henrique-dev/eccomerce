@@ -13,6 +13,10 @@ export default function MenuTop() {
                         <Nav.Link href="/products">Products</Nav.Link>
                         <Nav.Link href="/categories">Categories</Nav.Link>
                         <Nav.Link href="/orders">Orders</Nav.Link>
+                        <Nav.Link href="/sign-up">SignUp</Nav.Link>
+                        <Nav.Link href="/login">Login</Nav.Link>
+
+
                     </Nav>
                 </Container>
             </Navbar>

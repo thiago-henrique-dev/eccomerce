@@ -15,7 +15,7 @@ export default function PropertyDetails() {
   return (
     <div>
       <h1>Orders Details</h1>
-      <h3>{orders.id}</h3>
+      <h3>{orders}</h3>
     </div>
   )
 }

@@ -14,7 +14,7 @@ import CategoryList from '../components/Categories/CategoriesList'
 import OrderList from '../components/Orders/OrdersList'
 import OrderForm from '../components/Orders/OrdersForm'
 import OrderDetails from '../components/Orders/OrderDetails'
-import DeleteOrder from '../components/Orders/OrderDetails'
+import DeleteOrder from '../components/Orders/DeleteOrders'
 
 export default function ApplicationRouter() {
   return (
@@ -38,12 +38,11 @@ export default function ApplicationRouter() {
               <Route exact path="/products/:id/edit" element={<ProductForm />}></Route>
               <Route exact path="/products/:id/delete" element={<DeleteProducts />}></Route>
 
-
               <Route exact path="/orders" element={<OrderList />}></Route>
               <Route exact path="/orders/new" element={<OrderForm/>}></Route>
               <Route exact path="/orders/:id" element={<OrderDetails />}></Route>
-              {/* <Route exact path="/orders/:id/edit" element={<OrderForm />}></Route>
-              <Route exact path="/orders/:id/delete" element={<DeleteOrder />}></Route> */}
+              <Route exact path="/orders/:id/edit" element={<OrderForm />}></Route>
+              <Route exact path="/orders/:id/delete" element={<DeleteOrder />}></Route>
 
             </Routes>
           </Router>

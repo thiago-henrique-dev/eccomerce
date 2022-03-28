@@ -10,9 +10,9 @@ export default function PropertyForm() {
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
-  const [productImage, setProductImage] = useState('')
   const [categoryId, setCategoryId] = useState('')
-  
+  const [productImage, setProductImage] = useState('')
+    
 
   useEffect(() => {
     if (id) {
@@ -31,9 +31,9 @@ export default function PropertyForm() {
   const saveProducts = async () =>{
    
     if(id){
-        api_client.put(`/products/${id}`, { name,price,productImage,categoryId }).then(resp => { console.log(resp) })
+        api_client.put(`/products/${id}`, { name, price, productImage, categoryId}).then(resp => { console.log(resp) })
     } else{
-      api_client.post(`/products`, {name,price,productImage,categoryId }).then(resp => { 
+      api_client.post(`/products`, {name, price, productImage, categoryId }).then(resp => { 
         
         console.log("req", resp.name)
       
@@ -50,11 +50,12 @@ export default function PropertyForm() {
           <Form.Control name="Name" value={name} onChange={(e) => { setName(e.target.value) }}/>
           <Form.Label>Price</Form.Label>
           <Form.Control name="price" value={price} onChange={(e) => { setPrice(e.target.value) }}/>
-          <Form.Label>IMage</Form.Label>
+          <Form.Label>Image</Form.Label>
           <Form.Control name="Imagem" value={productImage} onChange={(e) => { setProductImage(e.target.value) }}/>
           <Form.Label>Categoria</Form.Label>
           <Form.Control name="categoryId" value={categoryId} onChange={(e) => { setCategoryId(e.target.value) }}/>
           <Button className="btn btn-success" onClick={saveProducts}>Save</Button>
+
         </Form.Group>
       </Form>
     </div>

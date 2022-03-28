@@ -3,13 +3,13 @@ import api_client from "../../config/api_client";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function DeleteProperty() {
+export default function DeleteOrders() {
   let { id } = useParams();
   let navigate = useNavigate();
 
   useEffect(() => {
     api_client.delete(`orders/${id}`).then(response => {
-      // navigate('/')
+      navigate('/orders')
     });
   }, []);
 
